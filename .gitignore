@@ -1,7 +1,6 @@
 # Node
+.env
 .vscode/
 config/
-migrations/
-models/
 node_modules/
 seeders/
