@@ -40,7 +40,7 @@ exports.signUp = async(req, res, next) => {
             password
         });
 
-        res.status(200).json({
+        res.status(201).json({
             message: `The account *${user.userName}* has successfully created !`,
             user
         });
@@ -80,7 +80,7 @@ exports.signIn = async(req, res, next) => {
     );
 
     return res
-        .status(200)
+        .status(201)
         .json({ message: "Successfully logged in !", token });
 
 }
