@@ -44,6 +44,14 @@ module.exports = (sequelize, DataTypes) => {
         sequelize,
         tableName: 'users',
         modelName: 'User',
+        hooks: {
+            beforeCreate: async(record, options) => {
+                const saltRounds = 12;
+                const salt = bcrypt.genSaltSync(saltRounds);
+                const hashedPassword = bcrypt.hashSync(record.dataValues.password, salt);
+                record.password = hashedPassword;
+            }
+        }
     });
     return User;
 };
