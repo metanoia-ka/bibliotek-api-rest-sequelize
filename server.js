@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
+const usersRoute = require('./routes/users.routes');
 
 dotenv.config();
 
@@ -19,6 +20,8 @@ app.use(
 app.use(morgan('dev'));
 
 app.use(express.json());
+
+app.use('/api/v1', usersRoute);
 
 app.listen({ port }, async() => {
     console.log(`Server up on http://localhost:${port}`);
